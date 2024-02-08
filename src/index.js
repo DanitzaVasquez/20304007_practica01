@@ -12,6 +12,11 @@ let tasks = [
   { id: 2, title: 'Task 2', description: 'Do something else' },
 ];
 
+// Get all issue
+app.get('/issues', (req, res) => {
+  res.json(issues);
+});
+
 // Get all tasks
 app.get('/tasks', (req, res) => {
   const tasks = tasksRepository.getAll()
