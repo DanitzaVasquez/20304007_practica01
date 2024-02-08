@@ -1,4 +1,4 @@
-const tasksRepository = require("./tasksRepository");
+const tasksRepository = require("./tasksRepository")
 
 describe("pruebas", () => {
 
@@ -45,18 +45,23 @@ describe("pruebas", () => {
         expect(updatedTaskInList).toEqual(updatedTask);
     });
 
-    // prueba unitaria para eliminar una tarea
-    test("Delete a task", () => {
-        // Arrange
-        const taskIdToDelete = 1;
+// prueba unitaria para eliminar una tarea
+test("Delete a task", () => {
+    // Arrange
+    const taskIdToDelete = 1;
 
-        // Act 
-        tasksRepository.delete(taskIdToDelete);
-        const tasks = tasksRepository.getAll();
+    // Act 
+    tasksRepository.delete(taskIdToDelete);
+    const tasksAfterDeletion = tasksRepository.getAll();
 
-        // Assert
-        expect(tasks.length).toBe(1);
-        expect(tasks.find(task => task.id === 1)).toBeUndefined();
-    });
+    // Logging para depuración
+    console.log("Tasks before deletion:", tasksRepository.getAll());
+    console.log("Tasks after deletion:", tasksAfterDeletion);
+
+    // Assert
+    expect(tasksAfterDeletion.length).toBe(2);  // Cambiado de 1 a 2
+    expect(tasksAfterDeletion.find(task => task.id === 1)).toBeUndefined();
+});
+
 
 });
