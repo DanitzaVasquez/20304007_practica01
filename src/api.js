@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 // Get all tasks
 app.get('/tasks', (req, res) => {
-  const tasks = tasksRepository.getAll();
+  const tasks = [] // tasksRepository.getAll();
   res.json(tasks);
 });
 
